@@ -57,6 +57,8 @@ Here are the steps:
 * Install additional libraries (see below)
 * Deploy the application to Google Cloud
 
+Installing libraries:
+
     mkdir lib
     pip install -t lib twilio
     pip install -t lib phonenumbers
