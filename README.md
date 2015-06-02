@@ -33,9 +33,9 @@ This form creates a button that will remind someone to get the milk.
     <input type="submit" value="Submit">
     </form>
 
-The following URL retrieves all messages containing the word "milk".
+The following URL retrieves all messages sent to +16125551212
 
-    http://web-to-text.appspot.com/retrieve?body=milk&api-key=Your-API-Key
+    http://web-to-text.appspot.com/retrieve?to=%2B16125551212&api-key=Your-API-Key
     
 
 ## Deployment

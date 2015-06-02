@@ -15,3 +15,10 @@ indexes:
   properties:
   - name: date
     direction: desc
+
+- kind: Message
+  ancestor: yes
+  properties:
+  - name: to
+  - name: date
+    direction: desc

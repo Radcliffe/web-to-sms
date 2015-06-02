@@ -17,7 +17,7 @@ class RetrieveMessages(webapp2.RequestHandler):
         ancestor_key = ndb.Key('Messages', 'messages')
         query = Message.query(ancestor=ancestor_key).order(-Message.date)
         if to:
-           query = query.filter(Messages.to == to)
+           query = query.filter(Message.to == to)
         print type(query)
         messages = [dict(to=msg.to,
                      body=msg.body,
