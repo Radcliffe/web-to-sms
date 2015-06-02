@@ -54,13 +54,12 @@ Here are the steps:
 * Edit the file `secrets.py`, inserting your Twilio credentials
 * Create a new project on Google App Engine
 * Edit the file `app.yaml` to include the name of your project
-* Install additional libraries
+* Install additional libraries (see below)
+* Deploy the application to Google Cloud
 
      mkdir lib
      pip install -t lib twilio
      pip install -t lib phonenumbers
-
-* Deploy the application to Google Cloud
 
 ## Author
 
