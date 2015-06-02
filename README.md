@@ -1,79 +1,53 @@
-## Python Flask Skeleton for Google App Engine
+# Web to SMS
 
-A skeleton for building Python applications on Google App Engine with the
-[Flask micro framework](http://flask.pocoo.org).
+This application sends an SMS text message from a web form and logs it to
+a database. It runs on Google App Engine and it uses Twilio to send text
+messages.
 
-See our other [Google Cloud Platform github
-repos](https://github.com/GoogleCloudPlatform) for sample applications and
-scaffolding for other python frameworks and use cases.
+## Sending messages
 
-## Run Locally
-1. Install the [App Engine Python SDK](https://developers.google.com/appengine/downloads).
-See the README file for directions. You'll need python 2.7 and [pip 1.4 or later](http://www.pip-installer.org/en/latest/installing.html) installed too.
+Before sending text messages, you will need to request an API key from the
+author, unless you deploy the application yourself. Send a POST request
+to the address http://web-to-text.appspot.com/send containing the following
+parameters:
 
-2. Clone this repo with
+* `to` : The phone number of the recipient (assumed to be in the US)
+* `api-key` : The API key (obtained from the author)
+* `body` : The message text
 
-   ```
-   git clone https://github.com/GoogleCloudPlatform/appengine-python-flask-skeleton.git
-   ```
-3. Install dependencies in the project's lib directory.
-   Note: App Engine can only import libraries from inside your project directory.
+## Retrieving messages
 
-   ```
-   cd appengine-python-flask-skeleton
-   pip install -r requirements.txt -t lib
-   ```
-4. Run this project locally from the command line:
+To retrieve the messages from the database, send a GET request to
+`/retrieve` with the parameters `api-key`, `to`, and `body`. 
+Only the `api-key` parameter is required. 
+Results are returned in JSON format in reverse chronological order.
 
-   ```
-   dev_appserver.py .
-   ```
+## Sample HTML Code
 
-Visit the application [http://localhost:8080](http://localhost:8080)
+This form creates a button that will remind someone to get the milk.
 
-See [the development server documentation](https://developers.google.com/appengine/docs/python/tools/devserver)
-for options when running dev_appserver.
+    <form action="http://web-to-text.appspot.com/send" method="POST">
+    <input type="hidden" name="to" value="612-555-1212">
+    <input type="hidden" name="body" value="Don't forget the milk">
+    <input type="hidden" name="api-key" value="?????">
+    <input type="submit" value="Submit">
+    </form>
 
-## Deploy
-To deploy the application:
+## Deployment
 
-1. Use the [Admin Console](https://appengine.google.com) to create a
-   project/app id. (App id and project id are identical)
-1. [Deploy the
-   application](https://developers.google.com/appengine/docs/python/tools/uploadinganapp) with
+To deploy this application yourself, you will need:
 
-   ```
-   appcfg.py -A <your-project-id> --oauth2 update .
-   ```
-1. Congratulations!  Your application is now live at your-app-id.appspot.com
+* The Google App Engine SDK for Python
+* A Twilio-enabled phone number
 
-## Next Steps
-This skeleton includes `TODO` markers to help you find basic areas you will want
-to customize.
+Here are the steps:
 
-### Relational Databases and Datastore
-To add persistence to your models, use
-[NDB](https://developers.google.com/appengine/docs/python/ndb/) for
-scale.  Consider
-[CloudSQL](https://developers.google.com/appengine/docs/python/cloud-sql)
-if you need a relational database.
-
-### Installing Libraries
-See the [Third party
-libraries](https://developers.google.com/appengine/docs/python/tools/libraries27)
-page for libraries that are already included in the SDK.  To include SDK
-libraries, add them in your app.yaml file. Other than libraries included in
-the SDK, only pure python libraries may be added to an App Engine project.
-
-### Feedback
-Star this repo if you found it useful. Use the github issue tracker to give
-feedback on this repo.
-
-## Contributing changes
-See [CONTRIB.md](CONTRIB.md)
-
-## Licensing
-See [LICENSE](LICENSE)
+* Rename the file `secrets_.py` to `secrets.py`
+* Edit the file `secrets.py`, inserting your Twilio credentials
+* Create a new project on Google App Engine
+* Edit the file `app.yaml` to include the name of your project
+* Deploy the application to Google Cloud
 
 ## Author
-Logan Henriquez and Johan Euphrosine
+
+David Radcliffe (dradcliffe@gmail.com)

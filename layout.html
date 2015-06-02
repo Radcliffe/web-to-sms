@@ -6,9 +6,14 @@
 <script src="static/jquery.min.js"></script> 
 <script src="static/jquery.min.map"></script> 
 
+
 <div class=page>
   <h1>Web to Text</h1>
-  <div class=metanav>
-  </div>
+  
+  <div class=metanav></div>
+  {% if message %}
+  <div class=flash> {{ message }}</div>
+  {% endif %}
+  
   {% block body %}{% endblock %}
 </div>

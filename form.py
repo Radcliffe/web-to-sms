@@ -13,11 +13,8 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class FormHandler(webapp2.RequestHandler):
     def get(self):
-        print "1"
         template = JINJA_ENVIRONMENT.get_template('form.html')
-        print "2"
         self.response.write(template.render())
-        print "3"
 
 
 app = webapp2.WSGIApplication([

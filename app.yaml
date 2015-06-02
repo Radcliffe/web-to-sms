@@ -11,6 +11,8 @@ handlers:
   script: form.app
 - url: /send
   script: send.app
+- url: /retrieve
+  script: retrieve.app
 - url: .*
   script: main.app
 
