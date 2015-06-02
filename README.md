@@ -56,9 +56,9 @@ Here are the steps:
 * Edit the file `app.yaml` to include the name of your project
 * Install additional libraries
 
-     $ mkdir lib
-     $ pip install -t lib twilio
-     $ pip install -t lib phonenumbers
+     mkdir lib
+     pip install -t lib twilio
+     pip install -t lib phonenumbers
 
 * Deploy the application to Google Cloud
 
