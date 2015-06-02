@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<form action="/send" method="POST">
+Recipient's phone number (Ex: +18005551212)
+<br>
+<input type="text" name="to">
+<br>
+Message body:
+<textarea rows="10" cols="50" name="body"></textarea>
+<br>
+<input type="submit" value="Submit">
+<br>
+</form>
+{% endblock %}

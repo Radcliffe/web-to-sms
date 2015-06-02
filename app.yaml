@@ -1,0 +1,24 @@
+application: web-to-text
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /static
+  static_dir: static
+- url: /compose
+  script: form.app
+- url: /send
+  script: send.app
+- url: .*
+  script: main.app
+
+libraries:
+- name: jinja2
+  version: "2.6"
+- name: markupsafe
+  version: "0.15"
+- name: webapp2
+  version: latest
+  
