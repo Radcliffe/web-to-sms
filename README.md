@@ -4,6 +4,8 @@ This application sends an SMS text message from a web form and logs it to
 a database. It runs on Google App Engine and it uses Twilio to send text
 messages.
 
+Note: This app is no longer maintained, and is not guaranteed to work.
+
 ## Sending messages
 
 Before sending text messages, you will need to request an API key from the
